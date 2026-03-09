@@ -29,9 +29,9 @@
 Login
 </button>
 
-<a href="/register" class="hover:text-indigo-400">
+<button onclick="openRegister()" class="hover:text-indigo-400">
 Register
-</a>
+</button>
 
 <% } else { %>
 
@@ -88,6 +88,70 @@ Logout
 
     </div>
 </div>
+
+
+
+
+<!-- Regsiter Model -->
+
+<div id="RegisterModel" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center">
+
+<div class="bg-white text-gray-800 p-8 rounded-xl w-full max-w-md relative">
+
+    <!-- Close Button -->
+    <button onclick="closeRegister()" class="absolute top-3 right-4 text-gray-500 text-xl">
+        ✕
+    </button>
+
+    <h2 class="text-2xl font-bold text-center mb-6 text-indigo-600">
+        Register
+    </h2>
+
+    <form method="POST" action="/users/register" class="space-y-4">
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"
+        />
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"
+        />
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"
+        />
+
+        <button
+            type="submit"
+            class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
+        >
+            Register
+        </button>
+
+    </form>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
 
 <!-- LOGIN MODAL -->
 <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center">
@@ -207,7 +271,10 @@ function openRegister(){
   modal.classList.add("flex");
 }
 
-
+function closeRegister(){
+  const modal = document.getElementById("RegisterModel");
+  modal.classList.add("hidden");
+}
 
 function closeLogin(){
   const modal = document.getElementById("loginModal");
